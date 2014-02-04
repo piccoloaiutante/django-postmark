@@ -120,7 +120,7 @@ class PostmarkMessage(dict):
             
             if message.attachments and isinstance(message.attachments, list):
                 if len(message.attachments):
-                    message_dict["Attachments"] = message.attachments
+                    message_dict["Attachments"] =[{"Name": x[0], "Content": x[1], "ContentType":x[2]} for x in message.attachments]
             
         except:
             if fail_silently:
